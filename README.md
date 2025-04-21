@@ -320,9 +320,59 @@ TAG标签（`@[tag]()`）用于设定其所在布局的HTML样式。将`@[tag]()
 ### 语法
 
 ```
-@[carousel](css=className, html样式, theme=主题, anim=动画, interval=间隔时间, indicator=是否显示指示器, control=是否显示控制器, caption-title-{index}=字幕标题, caption-content-{index}=字幕内容, caption-css=字幕className, caption-{css属性}=字幕css属性值)
+:::carousel(css=className, html样式, theme=主题, anim=动画, interval=间隔时间, indicator=是否显示指示器, control=是否显示控制器, caption-title-{index}=字幕标题, caption-content-{index}=字幕内容, caption-css=字幕className, caption-{css属性}=字幕css属性值)
 轮播内容
 :::
 ```
 
+| 标识或属性 | 是否必需 | 描述 |
+| --- | --- | --- |
+| `:::carousel … :::` | 是 | 轮播标识 |
+| `(…)` | 是 | 括号`()`中的内容由`css、html样式、theme、anim、interval、indicator、control、caption-title-{index}、caption-content-{index}、caption-css、caption-{css属性}`组成，各属性以`,`隔开，属性和值以`=`相连 |
+| `css` | 否 | 层叠样式表（Cascading Style Sheets），可选，值为css类名（className） |
+| `html样式` | 否 | HTML样式（可选），由逗号分隔的CSS属性和值组成，如：`width=200px` |
+| `theme` | 否 | 主题（可选），值`light(默认)|dark`，分别代表`浅色模式|深色模式` |
+| `anim` | 否 | 动画（可选），值`slide(默认)|fade`，分别代表`滑动切换|淡入淡出` |
+| `interval` | 否 | 一个项目自动播放到下一个项目的间隔时间（可选），值`空(默认5秒)|0|正整数（毫秒）`，`interval=0`代表默认不自动播放 |
+| `indicator` | 否 | 是否显示指示器（可选），值`0（默认）|1`。`indicator=1`表示显示指示器；`indicator=0`表示隐藏指示器 |
+| `control` | 否 | 是否显示控制器（可选），值`0（默认）|1`。`control=1`表示显示控制器；`control=0`表示隐藏控制器 |
+| `caption-title-{index}` | 否 | 字幕标题（可选），其中`index`表示轮播项目的索引，从0开始。如果值中包含逗号`,`，需要用引号(`"或'`)括起来 |
+| `caption-content-{index}` | 否 | 字幕内容（可选），其中`index`表示轮播项目的索引，从0开始。如果值中包含逗号`,`，需要用引号(`"或'`)括起来 |
+| `caption-css` | 否 | 字幕CSS（可选），值为CSS类名（className） |
+| `caption-{css属性}` | 否 | 字幕CSS属性（可选），值为CSS属性值。其中`{css属性}`也叫style属性，如`background-color`等 |
+
+### 示例
+
+<img width="1190" alt="image" src="https://github.com/user-attachments/assets/9ce26933-aa1f-40ae-85bc-b7214938fe0a" />
+
+## 手风琴
+
+手风琴标签（`:::accordion(…)…:::`）构建垂直折叠手风琴。标签中可放入文本、图片等以及HTML代码。
+
+### 语法
+
+```
+:::accordion(css=className, html样式, flush=冲洗边框, expand-index=默认展开索引, bs-parent-index=关联索引, title-css_{index}=标题className title-{css属性}_{index}=标题css属性值, content-css_{index}=内容className, content-{css属性}_{index}=内容css属性值)
+手风琴内容
+:::
+```
+
+| 标识或属性 | 是否必需 | 描述 |
+| --- | --- | --- |
+| `:::accordion … :::` | 是 | 手风琴标识 |
+| `(…)` | 是 | 括号`()`中的内容由`css、html样式、flush、expand-index、bs-parent-index、title-css_{index}、title-{css属性}_{index}、content-css_{index}、 content-{css属性}_{index}`组成，各属性以`,`隔开，属性和值以`=`相连 |
+| `css` | 否 | 层叠样式表（Cascading Style Sheets），可选，值为css类名（className） |
+| `html样式` | 否 | HTML样式（可选），由逗号分隔的CSS属性和值组成，如：`width=200px` |
+| `flush` | 否 | 是否冲洗（隐藏）边框（可选），值`0(默认)|1` |
+| `expand-index` | 否 | 默认展开的索引列表（可选），`expand-index=0-1-3`表明默认展开第1、2、4项 |
+| `bs-parent-index` | 否 | 与父元素关联的索引列表（可选），`bs-parent-index=0-3`表明当第1和4项为关闭状态，点击第1和4项后，第1和4项展开的同时，其他的展开项会折叠 |
+| `title-css_{index}` | 否 | 标题CSS（可选），值为CSS类名（className），类名之间以空格隔开。其中`{index}`值：`空|itemIndex|startIndex~endIndex` |
+| `title-{css属性}_{index}` | 否 | 标题CSS属性（可选），值为CSS属性值。其中`{css属性}`也叫style属性，如`background-color`等。其中`{index}`值：`空|itemIndex|startIndex~endIndex` |
+| `content-css_{index}` | 否 | 内容CSS（可选），值为CSS类名（className），类名之间以空格隔开。其中`{index}`值：`空|itemIndex|startIndex~endIndex` |
+| `content-{css属性}_{index}` | 否 | 内容CSS属性（可选），值为CSS属性值。其中`{css属性}`也叫style属性，如`background-color`等。其中`{index}`值：`空|itemIndex|startIndex~endIndex` |
+
+### 示例
+
+<img width="1196" alt="image" src="https://github.com/user-attachments/assets/53f5f7d3-854a-456e-bec1-406cc381cf5c" />
+<img width="1196" alt="image" src="https://github.com/user-attachments/assets/ad00f94f-0ad1-4d60-bc3f-edfa2c4afd71" />
 
